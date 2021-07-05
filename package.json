@@ -1,0 +1,24 @@
+{
+  "name": "sumts",
+  "version": "1.0.0",
+  "description": "SumTs",
+  "main": "index.js",
+  "scripts": {
+    "run Test": "node C:/Users/Administrator/Desktop/learn/SumTs/js/Test.js",
+    "run Structure": "node C:/Users/Administrator/Desktop/learn/SumTs/js/Structure.js",
+    "build All": "tsc -b ScriptTs/tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Athos1024/SumTs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Athos1024/SumTs/issues"
+  },
+  "homepage": "https://github.com/Athos1024/SumTs#readme",
+  "dependencies": {
+    "node-modules": "^1.0.1"
+  }
+}

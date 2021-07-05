@@ -1,5 +1,4 @@
 namespace structure{
-
     class Stack00<T>{
         private list:Array<T>;
 
@@ -11,7 +10,7 @@ namespace structure{
             return this.list.push(element);
         }
 
-        public pop():T{
+        public pop(){
             return this.list.pop();
         }
 
@@ -53,7 +52,7 @@ namespace structure{
             return this.count;
         }
 
-        public pop():T{
+        public pop(){
             let element = this.map[this.count - 1];
             this.map[this.count - 1] = null;
             this.count--;

@@ -1,4 +1,4 @@
-namespace strcuture{
+namespace structure{
 
     class Queue<T>{
         private count:number;
@@ -20,7 +20,7 @@ namespace strcuture{
             }
         }
 
-        public dequeue():T{
+        public dequeue(){
             if(this.isEmpty()) return undefined;
             let element = this.map[this.count];
             delete this.map[this.count]

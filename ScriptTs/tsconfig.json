@@ -1,0 +1,78 @@
+{
+    // "files":["src/a.ts"], //编译单个文件的列表
+    "include":["*"], //需要编译的文件或目录  加通配符*：只会编译src目录下的文件  或者在下一层 src/*/*
+    // "exclude":["lib"], // 排除
+    "references":[
+      {"path":"./structure"},
+      {"path":"./myTest"},
+    ],
+}
+
+
+
+
+// tsconfig.json
+// {
+//     "extends":"./tsonfig.base" // 导入基础配置
+//     "compilerOptions": {
+//      "incremental": true, // 增量编译 可以在第一次编译后生成存储编译信息的文件，在二次编译的时候根据这个文件做增量编译，这样就可以提高编译速度
+//      "tsBuildInfoFile":"./buildFile" // 增量编译文件的存储位置
+//      "diagnostis":true, // 打印诊断信息
+     
+//      "target": "es5", // 编译成的目标语言时什么版本，默认编译为es3
+//      "module": "commonjs", // 生成代码的模块标准 'none', 'commonjs', 'amd', 
+//      "outFile": "./app.js",  // 将多个相互依赖的文件生成一个文件，可以用AMD模块中
+     
+//      "lib": ["es2019.array"],   // TS需要引用的库，即声明文件，默认"dom","es5","scripthost"
+ 
+//      "allowJs": true,   // 允许编译js文件（js、jsx）
+//      "checkJs": true, // 允许在js文件中报错，通常与allowJS一起使用
+//      "outDir": "./js", // 指定输出目录
+//      "rootDir": "./", // 指定输入文件目录（用于输出）
+    
+//      "declaration": true,   // 生成声明文件
+//      "declarationDir":"./d",  // 声明文件的路径
+//      "emitDeclarationOnly": true,  // 只生成声明文件
+//      "sourceMap": true,  // 生成目标文件的 sourceMap
+//      "inlineSourceMap": true, // 生成目标文件的 inline sourceMap
+//      "declarationMap": true,  / 生成目标文件的 sourceMap
+//      "typeRoots": [],    // 声明文件目录，默认node_modules/@types
+//      "types": [],   // 声明文件包
+ 
+//      "removeComments": true, // 删除注释
+ 
+//      "noEmit": true,     // 不输出文件，只做类型检查
+//      "onEmitOnError":true,  // 发生错误时不输出文件
+ 
+//      "noEmitHelpers":true, // 不输出文件
+//      "importHelpers": true, 
+ 
+//      "downlevelIteration": true, // 降级遍历器的实现（es3/5）
+ 
+//      "strict": true,  // 开启所有严格的类型检查           
+//      "alwaysStrict": true, // 在代码中注入"use strict"
+//      "noImplicitAny": true,   // 不允许隐式的any类型
+//      "strictNullChecks": true,   // 不允许把null、undefined 赋值给其他类型变量
+//      "strictFunctionTypes": true,   // 不允许函数参数双向协变
+//      "strictBindCallApply": true,  // 严格的bind/call/apply检查
+//      "strictPropertyInitialization": true,  // 类的实例属性必须初始化
+//      "noImplicitThis": true,   // 不允许this有隐式的any类型
+ 
+//      "noUnusedLocals": true,  // 检查只声明，未使用的局部变量
+//      "noUnusedParameters": true,  // 检查未使用的函数参数
+//      "noImplicitReturns": true,  // 每个分支都要有返回值
+//      "noFallthroughCasesInSwitch": true, // 防止switch语句贯穿
+ 
+//      "esModuleInterop": true,  // 允许export=导出，由import from导入
+//      "allowUmdGlobalAccess": true, // 允许在模块中访问UMD全局变量
+//      "moduleResolution": "node", // 模块解析策略
+//      "baseUrl": "./",    // 解析非相对模块的基地址             
+//      "paths": {"jquery":["node_modules/jquery/dist/jquery.slim.min.js"]},    // 路径映射，相对于baseUrl                
+//      "rootDirs": ["src", "out"],  // 将多个目录放在一个虚拟目录下，用于运行时
+ 
+//      "listEittedFiles": true, // 打印输出的文件
+//      "listFiles": true // 打印编译的文件（包括引用的声明文件）
+ 
+//      "jsx": "react"   // preserve 生成的代码会保留jsx格式（扩展名就是jsx），可以被后续操作继续转换使用  react-native 生成的代码是jsx格式（扩展名是js） react 生成的代码不会保留jsx，而是存在jsx语法
+//    }
+//  }

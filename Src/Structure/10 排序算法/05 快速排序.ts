@@ -38,20 +38,3 @@ function swap(arr: number[], i: number, j: number) {
   ;[arr[i], arr[j]] = [arr[j], arr[i]]
 }
 
-
-namespace test{
-    function quick(arr:number[],left:number,right:number){
-      if(arr.length >1){
-        let index = partition(arr,left,right);
-        if(left < index - 1){
-          quick(arr,left,index - 1);
-        }
-        if(right > index){
-          quick(arr,index,right);
-        }
-      }
-    }
- 
-
-
-}

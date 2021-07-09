@@ -1,3 +1,7 @@
+console.log(
+ (_=>[..."`1234567890-=~~QWERTYUIOP[]\\~ASDFGHJKL;'~~ZXCVBNM,./~"].map(x=>(o+=`/${b='_'.repeat(w=x<y?2:' 667699'[x=["BS","TAB","CAPS","ENTER"][p++]||'SHIFT',p])}\\|`,m+=y+(x+'    ').slice(0,w)+y+y,n+=y+b+y+y,l+=' __'+b)[73]&&(k.push(l,m,n,o),l='',m=n=o=y),m=n=o=y='|',p=l=k=[])&&k.join`
+`)() 
+);
 var structure;
 (function (structure) {
     class Stack00 {
@@ -1028,26 +1032,231 @@ var structure;
         shifDown(index) {
             let left = this.getLeftIndex(index);
             let right = this.getRightIndex(index);
-            if (this.compare(this.heap[index], this.heap[length]) && this.compare(this.heap[index], this.heap[right])) {
-                if (!this.compare(this.heap[right], this.heap[length])) {
+            if (this.compare(this.heap[index], this.heap[left]) && this.compare(this.heap[index], this.heap[right])) {
+                if (!this.compare(this.heap[right], this.heap[left])) {
                     this.swap(this.heap, right, index);
                     this.shifDown(right);
                 }
                 else {
-                    // this.swap()
+                    this.swap(this.heap, left, index);
+                    this.shifDown(left);
+                }
+            }
+            else if (this.compare(this.heap[index], this.heap[left])) {
+                this.swap(this.heap, left, index);
+                this.shifDown(left);
+            }
+            else if (this.compare(this.heap[index], this.heap[right])) {
+                this.swap(this.heap, right, index);
+                this.shifDown(right);
+            }
+        }
+        inster(value) {
+            this.heap.push(value);
+            this.siftUp(this.heap.length - 1);
+            return true;
+        }
+        extract() {
+            if (this.isEmpty()) {
+                return undefined;
+            }
+            if (this.size() == 1) {
+                return this.heap.unshift();
+            }
+            const removeValue = this.heap[0];
+            this.heap[0] = this.heap.pop();
+            this.shifDown(0);
+            return removeValue;
+        }
+        isEmpty() {
+            return this.size() == 0;
+        }
+        size() {
+            return this.heap.length;
+        }
+        preTraverse(cb) {
+            this.preTraverseNode(0, cb);
+        }
+    }
+})(structure || (structure = {}));
+var structure;
+(function (structure) {
+    function quickSort(arr) {
+        quick(arr, 0, arr.length - 1);
+        return arr;
+    }
+    structure.quickSort = quickSort;
+    function quick(arr, left, right) {
+        if (arr.length > 1) {
+            let index = partition(arr, left, right);
+            console.log('index', index);
+            //两半局部有序分开  递归排序 分而治之
+            if (left < index - 1) {
+                quick(arr, left, index - 1);
+            }
+            if (index < right) {
+                quick(arr, index, right);
+            }
+        }
+    }
+    function partition(arr, left, right) {
+        //将数组 以pivot 为标准 划分为 两半 局部有序的
+        let pivot = arr[Math.floor((left + right) / 2)];
+        let i = left;
+        let j = right;
+        while (i <= j) {
+            while (arr[i] < pivot) {
+                i++;
+            }
+            while (arr[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                swap(arr, i, j);
+                i++;
+                j--;
+            }
+        }
+        return i;
+    }
+    function swap(arr, i, j) {
+        ;
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    let arr = [15, 4, 53, 1, 3, 3, 5, 45, 45];
+    quickSort(arr);
+    console.log(arr);
+})(structure || (structure = {}));
+var sort;
+(function (sort) {
+    class bubbleSort {
+        sort(arr) {
+            for (let i = 0; i < arr.length - 1; i++) {
+                let complete = true;
+                for (let j = 0; j < arr.length - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        complete = false;
+                        [arr[j], arr[i]] = [arr[i], arr[j]];
+                    }
+                }
+                if (complete) {
+                    return;
                 }
             }
         }
     }
-    function twoSum(nums, target) {
-        for (let i = 0, len = nums.length; i < len; i++) {
-            let num = target - nums[i];
-            let index = nums.indexOf(num);
-            if (index > -1) {
-                return [i, index];
+})(sort || (sort = {}));
+var sort;
+(function (sort) {
+    class SelectionSort {
+        sort(arr) {
+            for (let i = 0; i < arr.length - 1; i++) {
+                let cur = i;
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[cur] > arr[j]) {
+                        cur = i;
+                    }
+                }
+                if (cur != i) {
+                    [arr[cur], arr[i]] = [arr[i], arr[cur]];
+                }
             }
         }
     }
-    ;
-})(structure || (structure = {}));
+})(sort || (sort = {}));
+var sort;
+(function (sort) {
+    class insertionSort {
+        sort(arr) {
+            for (let i = 1; i < arr.length; i++) {
+                let j = i;
+                let tmp = arr[i];
+                while (j > 0 && arr[j - 1] > tmp) {
+                    arr[j] = arr[j - 1];
+                    j--;
+                }
+                arr[j] = tmp;
+            }
+        }
+    }
+})(sort || (sort = {}));
+var sort;
+(function (sort) {
+    class shellSort {
+        sort(arr) {
+            let gap = Math.floor(arr.length / 2);
+            while (gap >= 1) {
+                for (let i = gap; i < arr.length; i++) {
+                    let j = i;
+                    let tmp = arr[i];
+                    while (j > gap - 1 && arr[j - gap] > tmp) {
+                        arr[j] = arr[j - gap];
+                        j -= gap;
+                    }
+                    arr[j] = tmp;
+                }
+            }
+            gap = Math.floor(gap / 2);
+        }
+    }
+})(sort || (sort = {}));
+var sort;
+(function (sort) {
+    class quickSort {
+        sort(arr) {
+            this.quick(arr, 0, arr.length - 1);
+        }
+        quick(arr, left, right) {
+            if (arr.length < 0)
+                return;
+            let index = this.partition(arr, left, right);
+            if (index - 1 > left) {
+                this.partition(arr, left, index - 1);
+            }
+            else if (index < right) {
+                this.partition(arr, index, right);
+            }
+        }
+        partition(arr, left, right) {
+            let mid = arr[Math.floor((left + right) / 2)];
+            let i = left;
+            let j = right;
+            while (i < j) {
+                while (arr[i] < mid) {
+                    i++;
+                }
+                while (arr[j] > mid) {
+                    j--;
+                }
+                if (i < j) {
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                    i++;
+                    j--;
+                }
+            }
+            return i;
+        }
+    }
+})(sort || (sort = {}));
+var sort;
+(function (sort) {
+    class mergeSort {
+        sort(arr) {
+            let mid = Math.floor(arr.length / 2);
+            let left = this.sort(arr.slice(0, mid));
+            let right = this.sort(arr.slice(mid, arr.length));
+            arr = this.merge(left, right);
+            return arr;
+        }
+        merge(letf, right) {
+            let i = 0;
+            let j = 0;
+            let result = [];
+            while (i < letf.length && j < right.length) {
+                result.push(letf[i] < right[j] ? letf[i++] : right[j++]);
+            }
+            return result.concat(i < letf.length ? letf.slice(i) : right.slice(j));
+        }
+    }
+})(sort || (sort = {}));
 //# sourceMappingURL=Structure.js.map

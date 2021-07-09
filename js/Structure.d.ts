@@ -47,5 +47,18 @@ declare namespace structure {
 declare namespace structure {
 }
 declare namespace structure {
+    function quickSort(arr: number[]): number[];
+}
+declare namespace sort {
+}
+declare namespace sort {
+}
+declare namespace sort {
+}
+declare namespace sort {
+}
+declare namespace sort {
+}
+declare namespace sort {
 }
 //# sourceMappingURL=Structure.d.ts.map

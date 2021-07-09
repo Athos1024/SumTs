@@ -1,9 +1,6 @@
 import { NEGATIVE_INF } from '../../models/const'
 
-export function knapSack(
-  goods: { weight: number; value: number }[],
-  capacity: number
-) {
+export function knapSack(goods: { weight: number; value: number }[],capacity: number) {
   //初始化 f
   let f = []
   f[0] = { value: 0, pre: -1 }

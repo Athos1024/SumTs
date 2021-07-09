@@ -19,9 +19,11 @@
   },
   "homepage": "https://github.com/Athos1024/SumTs#readme",
   "dependencies": {
+    "fs": "0.0.1-security",
     "gulp": "^4.0.2",
     "gulp-typescript": "^6.0.0-alpha.1",
     "node-modules": "^1.0.1",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "vinyl-source-stream": "^2.0.0"
   }
 }

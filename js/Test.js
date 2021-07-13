@@ -1,5 +1,8 @@
 var Test;
 (function (Test) {
+    console.log('hello world');
+    console.log('hello world');
+    console.log('hello world');
     function minCoinChange(coins, amount) {
         let f = [];
         let temp = [];

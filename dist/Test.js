@@ -1,0 +1,1 @@
+var Test;!function(){console.log("hello world"),console.log("hello world"),console.log("hello world");let r=[3,5,7,10];console.log(function(t){for(let n=r.length-1;0<=n;n--)if(!(t<r[n])){let l=n,o=t,e=[];for(;0<=l;)if(0<=o-r[l]){if(o-=r[l],e.push(r[l]),0==o)return e}else l--}return-1}((r,7)))}(Test=Test||{});

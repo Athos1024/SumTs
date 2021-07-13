@@ -45,5 +45,4 @@ namespace structure {
     let arr = [15,4,53,1,3,3,5,45,45];
     quickSort(arr);
     console.log(arr);
-    
 }

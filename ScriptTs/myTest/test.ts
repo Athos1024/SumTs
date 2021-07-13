@@ -1,4 +1,8 @@
 namespace Test {
+  console.log('hello world');
+  console.log('hello world');
+  console.log('hello world');
+  
 
   function minCoinChange(coins: number[], amount: number) {
     let f = []

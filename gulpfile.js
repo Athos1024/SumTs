@@ -3,9 +3,6 @@ var ts =  require("gulp-typescript");
 var fs = require('fs');
 var sourcemaps  =require("gulp-sourcemaps");
 var buffer = require('vinyl-buffer');
-// var watchify = require("watchify");
-var browserify = require("browserify");
-var run = require("gulp-run")
 var uglify = require('gulp-uglify');
 const exec = require('child_process').exec;
 const { series } = require("gulp");
@@ -54,4 +51,4 @@ function task(){
 }
 
 exports.gulpBuild = build;
-exports.build = series(build,task)
+exports.build = series([build,task])

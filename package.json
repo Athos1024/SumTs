@@ -6,7 +6,9 @@
   "scripts": {
     "run Test": "node C:/Users/Administrator/Desktop/learn/SumTs/js/Test.js",
     "run Structure": "node C:/Users/Administrator/Desktop/learn/SumTs/js/Structure.js",
-    "build All": "tsc -b ScriptTs/tsconfig.json"
+    "run leetcode":"node ./js/leetcode.js",
+    "build All": "tsc -b ScriptTs/tsconfig.json",
+    "gulp build":"gulp build"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,3 @@
-console.log('1111');
-
-
 var structure;
 (function (structure) {
     class Stack00 {

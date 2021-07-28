@@ -1,7 +1,3 @@
-console.log('gulp1');
-console.log('gulp1');
-console.log('gulp1');
-console.log('gulp1');
-console.log('gulp1');
+console.log('111');
 
 //# sourceMappingURL=gulp1.js.map

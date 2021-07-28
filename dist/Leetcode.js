@@ -1,0 +1,1 @@
+var Leetcode;(function(){let e=new class{run(){let e=[-2,1,-3,4,-1,2,1,-5,4],t=0,[o]=e;return e.forEach(e=>{t=Math.max(t+e,e),o=Math.max(t,o)}),o}};console.log("m.run",e.run())})(Leetcode=(Leetcode=Leetcode||{})||{}),Leetcode=Leetcode||{};

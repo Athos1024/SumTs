@@ -4,17 +4,20 @@ var fs = require('fs');
 var sourcemaps  =require("gulp-sourcemaps");
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
-const exec = require('child_process').exec;
+const child_process = require('child_process');
 const { series } = require("gulp");
 
 const parentPath = "ScriptTs";
+const cachePath = "./.vscode/buildcache.json"
+
+
 function build(cb){
-    //tsProject.src().pipe(tsProject()).pipe(gulp.dest("./js")) 生成d.ts,js
-    //pipe(buffer()).pipe(sourcemaps.init({loadMaps:true})).pipe(sourcemaps.write('../js')).pipe(gulp.dest("./js")) 生成ts.mpa,js.map
 
     //文件夹内所有文件名
     let paths = fs.readdirSync(parentPath); // console.log('fs.readFileSync(path)',);
-    
+    let b = fs.readFileSync(cachePath);
+    let cache = JSON.parse(b);
+
     for (let i = 0; i < paths.length; i++) {
         const element = paths[i];
         let fileName = parentPath + "/" + element;
@@ -24,20 +27,36 @@ function build(cb){
         }
 
         let curPath = parentPath + "/" + element;
-        if(fs.existsSync(curPath  + "/tsconfig.json")){
-            //已有tsconfig.json 直接编译 tsc
-            exec("tsc -b " + curPath  + "/tsconfig.json");
-        }else{
-            //默认tsconfig.json
-            console.log('element',element);
-            let tsProject = ts.createProject("./tsconfig.json");
-            tsProject.options.outFile =  `./${element}.js`
-            tsProject.config.include = [`./${parentPath}/${element}/**/*`]
-            tsProject.src().pipe(tsProject()).pipe(gulp.dest("./js")).pipe(buffer()).pipe(sourcemaps.init({loadMaps:true})).pipe(sourcemaps.write('../js')).pipe(gulp.dest("./js"))
+
+        let ctimeMs = fs.statSync(curPath).ctimeMs;
+        if(!cache[element] ||　cache[element] > ctimeMs){
+            //文件被更改
+            console.log('cache[element]',cache[element]);
+            console.log('ctimeMs',ctimeMs);
+
+            
+            cache[element] = ctimeMs;
+
+            if(fs.existsSync(curPath  + "/tsconfig.json")){
+                //已有tsconfig.json 直接编译 tsc
+                child_process.exec("tsc -b " + curPath  + "/tsconfig.json");
+            }else{
+                //默认tsconfig.json
+                console.log('element',element);
+                let tsProject = ts.createProject("./tsconfig.json");
+                tsProject.config.include = [`./${parentPath}/${element}/**/*`]
+                tsProject.src().
+                pipe(tsProject()).
+                pipe(buffer()).
+                pipe(sourcemaps.init({loadMaps:true})).
+                pipe(sourcemaps.write('./')).
+                pipe(gulp.dest("js"))
+            }
         }
     }
 
-    //TODO: 监视更新的文件
+    //更新缓存
+    fs.writeFileSync(cachePath, JSON.stringify(cache));
     cb();
 }
 

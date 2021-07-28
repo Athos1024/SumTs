@@ -1,1 +1,1 @@
-console.log("gulp2");
+console.log("111"),eMappingURL=sort.js.map;

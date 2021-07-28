@@ -1,1 +1,1 @@
-{"version":3,"sources":["ScriptTs/gulp1/testGulp.ts"],"names":[],"mappings":"","file":"gulp1.d.ts","sourcesContent":[]}
+{"version":3,"sources":["ScriptTs/gulp1/testGulp.ts"],"names":[],"mappings":"","file":"gulp1.d.ts","sourcesContent":["console.log('111');\r\n"]}

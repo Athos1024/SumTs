@@ -199,5 +199,5 @@ namespace Leetcode {
     }
 
     let m = new Maximum();
-    console.log('m.run',m.run());
+    // console.log('m.run',m.run());
 }

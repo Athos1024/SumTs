@@ -14,7 +14,7 @@ const cachePath = "./.vscode/buildcache.json"
 function build(cb){
 
     //文件夹内所有文件名
-    let paths = fs.readdirSync(parentPath); // console.log('fs.readFileSync(path)',);
+    let paths = fs.readdirSync(parentPath); 
     let b = fs.readFileSync(cachePath);
     let cache = JSON.parse(b);
 
@@ -27,14 +27,13 @@ function build(cb){
         }
 
         let curPath = parentPath + "/" + element;
+        let ctimeMs = getFileModifyTime(curPath);
 
-        let ctimeMs = fs.statSync(curPath).ctimeMs;
-        if(!cache[element] ||　cache[element] > ctimeMs){
+        if(!cache[element] ||　cache[element] < ctimeMs){
             //文件被更改
-            console.log('cache[element]',cache[element]);
-            console.log('ctimeMs',ctimeMs);
 
-            
+            console.log('filePath',element);
+            //更新缓存
             cache[element] = ctimeMs;
 
             if(fs.existsSync(curPath  + "/tsconfig.json")){
@@ -42,8 +41,8 @@ function build(cb){
                 child_process.exec("tsc -b " + curPath  + "/tsconfig.json");
             }else{
                 //默认tsconfig.json
-                console.log('element',element);
                 let tsProject = ts.createProject("./tsconfig.json");
+                tsProject.options.outFile =  `./${element}.js`
                 tsProject.config.include = [`./${parentPath}/${element}/**/*`]
                 tsProject.src().
                 pipe(tsProject()).
@@ -68,6 +67,20 @@ function task(){
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
 }
+
+
+//获取文件修改时间
+function getFileModifyTime(filePath){
+    let files = fs.readdirSync(filePath);
+    let time = 0;
+    
+    for (let i = 0; i < files.length; i++) {
+        const element = files[i];
+        time = Math.max(fs.statSync(filePath + "/" + element).ctimeMs,time);
+    }
+    return time;
+}
+
 
 exports.gulpBuild = build;
 exports.build = series([build,task])

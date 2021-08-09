@@ -88,7 +88,7 @@ namespace Leetcode {
             }
 
             let f = new Find();
-            console.log('f.run();', f.run());
+            // console.log('f.run();', f.run());
         }
     }
 }

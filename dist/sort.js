@@ -1,1 +1,1 @@
-console.log("111"),eMappingURL=sort.js.map;
+var Leetcode;Leetcode=(Leetcode=Leetcode||{})||{},new class{run(){let e=[-2,1,-3,4,-1,2,1,-5,4],t=0,[c]=e;return e.forEach(e=>{t=Math.max(t+e,e),c=Math.max(t,c)}),c}},Leetcode=Leetcode||{};

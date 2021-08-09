@@ -1,4 +1,7 @@
 {
+    "compilerOptions": {
+      "experimentalDecorators": true,
+    },
     // "files":["src/a.ts"], //编译单个文件的列表
     "include":["*"], //需要编译的文件或目录  加通配符*：只会编译src目录下的文件  或者在下一层 src/*/*
     // "exclude":["lib"], // 排除

@@ -1,9 +1,9 @@
-//³éÏóÔªËØ£¨Element£©½ÇÉ«£ºÉùÃ÷Ò»¸ö°üº¬½ÓÊÜ²Ù×÷ accept() µÄ½Ó¿Ú£¬±»½ÓÊÜµÄ·ÃÎÊÕß¶ÔÏó×÷Îª accept() ·½·¨µÄ²ÎÊı¡£
+//æŠ½è±¡å…ƒç´ ï¼ˆElementï¼‰è§’è‰²ï¼šå£°æ˜ä¸€ä¸ªåŒ…å«æ¥å—æ“ä½œ accept() çš„æ¥å£ï¼Œè¢«æ¥å—çš„è®¿é—®è€…å¯¹è±¡ä½œä¸º accept() æ–¹æ³•çš„å‚æ•°ã€‚
 interface Elemente {
     accept(visitor: Visitor): void
 }
 
-//¾ßÌåÔªËØ£¨ConcreteElement£©½ÇÉ«£ºÊµÏÖ³éÏóÔªËØ½ÇÉ«Ìá¹©µÄ accept() ²Ù×÷£¬Æä·½·¨ÌåÍ¨³£¶¼ÊÇ visitor.visit(this) £¬ÁíÍâ¾ßÌåÔªËØÖĞ¿ÉÄÜ»¹°üº¬±¾ÉíÒµÎñÂß¼­µÄÏà¹Ø²Ù×÷¡£
+//å…·ä½“å…ƒç´ ï¼ˆConcreteElementï¼‰è§’è‰²ï¼šå®ç°æŠ½è±¡å…ƒç´ è§’è‰²æä¾›çš„ accept() æ“ä½œï¼Œå…¶æ–¹æ³•ä½“é€šå¸¸éƒ½æ˜¯ visitor.visit(this) ï¼Œå¦å¤–å…·ä½“å…ƒç´ ä¸­å¯èƒ½è¿˜åŒ…å«æœ¬èº«ä¸šåŠ¡é€»è¾‘çš„ç›¸å…³æ“ä½œã€‚
 class ConcreteElementA implements Elemente {
     constructor(private name: string, private num: number) {
 
@@ -12,14 +12,14 @@ class ConcreteElementA implements Elemente {
         return this.name;
     }
     getMoney(): string {
-        return this.num + 'ÍòÔª';
+        return this.num + 'ä¸‡å…ƒ';
     }
     accept(visitor: Visitor) {
         visitor.visitA(this)
     }
 }
 
-//¾ßÌåÔªËØ£¨ConcreteElement£©½ÇÉ«£ºÊµÏÖ³éÏóÔªËØ½ÇÉ«Ìá¹©µÄ accept() ²Ù×÷£¬Æä·½·¨ÌåÍ¨³£¶¼ÊÇ visitor.visit(this) £¬ÁíÍâ¾ßÌåÔªËØÖĞ¿ÉÄÜ»¹°üº¬±¾ÉíÒµÎñÂß¼­µÄÏà¹Ø²Ù×÷¡£
+//å…·ä½“å…ƒç´ ï¼ˆConcreteElementï¼‰è§’è‰²ï¼šå®ç°æŠ½è±¡å…ƒç´ è§’è‰²æä¾›çš„ accept() æ“ä½œï¼Œå…¶æ–¹æ³•ä½“é€šå¸¸éƒ½æ˜¯ visitor.visit(this) ï¼Œå¦å¤–å…·ä½“å…ƒç´ ä¸­å¯èƒ½è¿˜åŒ…å«æœ¬èº«ä¸šåŠ¡é€»è¾‘çš„ç›¸å…³æ“ä½œã€‚
 class ConcreteElementB implements Elemente {
     constructor(private name: string, private num: number) {
 
@@ -28,36 +28,36 @@ class ConcreteElementB implements Elemente {
         return this.name;
     }
     getMoney(): string {
-        return this.num + 'ÍòÔª';
+        return this.num + 'ä¸‡å…ƒ';
     }
     accept(visitor: Visitor) {
         visitor.visitB(this)
     }
 }
 
-//³éÏó·ÃÎÊÕß£¨Visitor£©½ÇÉ«£º¶¨ÒåÒ»¸ö·ÃÎÊ¾ßÌåÔªËØµÄ½Ó¿Ú£¬ÎªÃ¿¸ö¾ßÌåÔªËØÀà¶ÔÓ¦Ò»¸ö·ÃÎÊ²Ù×÷ visit() £¬¸Ã²Ù×÷ÖĞµÄ²ÎÊıÀàĞÍ±êÊ¶ÁË±»·ÃÎÊµÄ¾ßÌåÔªËØ¡£
+//æŠ½è±¡è®¿é—®è€…ï¼ˆVisitorï¼‰è§’è‰²ï¼šå®šä¹‰ä¸€ä¸ªè®¿é—®å…·ä½“å…ƒç´ çš„æ¥å£ï¼Œä¸ºæ¯ä¸ªå…·ä½“å…ƒç´ ç±»å¯¹åº”ä¸€ä¸ªè®¿é—®æ“ä½œ visit() ï¼Œè¯¥æ“ä½œä¸­çš„å‚æ•°ç±»å‹æ ‡è¯†äº†è¢«è®¿é—®çš„å…·ä½“å…ƒç´ ã€‚
 interface Visitor {
     visitA(element: ConcreteElementA): void
     visitB(element: ConcreteElementB): void
 }
 
-// ¾ßÌå·ÃÎÊÕß£¨ConcreteVisitor£©½ÇÉ«£ºÊµÏÖ³éÏó·ÃÎÊÕß½ÇÉ«ÖĞÉùÃ÷µÄ¸÷¸ö·ÃÎÊ²Ù×÷£¬È·¶¨·ÃÎÊÕß·ÃÎÊÒ»¸öÔªËØÊ±¸Ã×öÊ²Ã´¡£
+// å…·ä½“è®¿é—®è€…ï¼ˆConcreteVisitorï¼‰è§’è‰²ï¼šå®ç°æŠ½è±¡è®¿é—®è€…è§’è‰²ä¸­å£°æ˜çš„å„ä¸ªè®¿é—®æ“ä½œï¼Œç¡®å®šè®¿é—®è€…è®¿é—®ä¸€ä¸ªå…ƒç´ æ—¶è¯¥åšä»€ä¹ˆã€‚
 class ConcreteVisitorA implements Visitor {
     visitA(element: ConcreteElementA) {
-        console.log(`${element.getName()}Ê¹ÓÃ${element.getMoney()}È¥Âò·¿`)
+        console.log(`${element.getName()}ä½¿ç”¨${element.getMoney()}å»ä¹°æˆ¿`)
     }
     visitB(element: ConcreteElementB) {
-        console.log(`${element.getName()}Ê¹ÓÃ${element.getMoney()}È¥Âò·¿`)
+        console.log(`${element.getName()}ä½¿ç”¨${element.getMoney()}å»ä¹°æˆ¿`)
     }
 }
 
-// ¾ßÌå·ÃÎÊÕß£¨ConcreteVisitor£©½ÇÉ«£ºÊµÏÖ³éÏó·ÃÎÊÕß½ÇÉ«ÖĞÉùÃ÷µÄ¸÷¸ö·ÃÎÊ²Ù×÷£¬È·¶¨·ÃÎÊÕß·ÃÎÊÒ»¸öÔªËØÊ±¸Ã×öÊ²Ã´¡£
+// å…·ä½“è®¿é—®è€…ï¼ˆConcreteVisitorï¼‰è§’è‰²ï¼šå®ç°æŠ½è±¡è®¿é—®è€…è§’è‰²ä¸­å£°æ˜çš„å„ä¸ªè®¿é—®æ“ä½œï¼Œç¡®å®šè®¿é—®è€…è®¿é—®ä¸€ä¸ªå…ƒç´ æ—¶è¯¥åšä»€ä¹ˆã€‚
 class ConcreteVisitorB implements Visitor {
     visitA(element: ConcreteElementA) {
-        console.log(`${element.getName()}Ê¹ÓÃ${element.getMoney()}È¥Âò³µ`)
+        console.log(`${element.getName()}ä½¿ç”¨${element.getMoney()}å»ä¹°è½¦`)
     }
     visitB(element: ConcreteElementB) {
-        console.log(`${element.getName()}Ê¹ÓÃ${element.getMoney()}È¥Âò³µ`)
+        console.log(`${element.getName()}ä½¿ç”¨${element.getMoney()}å»ä¹°è½¦`)
     }
 }
 
@@ -77,11 +77,11 @@ class ObjectStructure {
 class Client {
     public static main(): void {
         const list: ObjectStructure = new ObjectStructure()
-        const shangren1 = new ConcreteElementA('ÉÌÈË1', 30)
-        const shangren2 = new ConcreteElementA('ÉÌÈË2', 50)
-        const shangren3 = new ConcreteElementA('ÉÌÈË3', 60)
-        const diaosi1 = new ConcreteElementB('ŒÅË¿1', 60)
-        const diaosi2 = new ConcreteElementB('ŒÅË¿1', 80)
+        const shangren1 = new ConcreteElementA('å•†äºº1', 30)
+        const shangren2 = new ConcreteElementA('å•†äºº2', 50)
+        const shangren3 = new ConcreteElementA('å•†äºº3', 60)
+        const diaosi1 = new ConcreteElementB('å±Œä¸1', 60)
+        const diaosi2 = new ConcreteElementB('å±Œä¸1', 80)
         list.add(shangren1)
         list.add(shangren2)
         list.add(shangren3)
@@ -95,13 +95,13 @@ class Client {
 }
 Client.main()
 
-// ÉÌÈË1Ê¹ÓÃ30ÍòÔªÈ¥Âò·¿
-// ÉÌÈË2Ê¹ÓÃ50ÍòÔªÈ¥Âò·¿
-// ÉÌÈË3Ê¹ÓÃ60ÍòÔªÈ¥Âò·¿
-// ŒÅË¿1Ê¹ÓÃ60ÍòÔªÈ¥Âò·¿
-// ŒÅË¿1Ê¹ÓÃ80ÍòÔªÈ¥Âò·¿
-// ÉÌÈË1Ê¹ÓÃ30ÍòÔªÈ¥Âò³µ
-// ÉÌÈË2Ê¹ÓÃ50ÍòÔªÈ¥Âò³µ
-// ÉÌÈË3Ê¹ÓÃ60ÍòÔªÈ¥Âò³µ
-// ŒÅË¿1Ê¹ÓÃ60ÍòÔªÈ¥Âò³µ
-// ŒÅË¿1Ê¹ÓÃ80ÍòÔªÈ¥Âò³µ
+// å•†äºº1ä½¿ç”¨30ä¸‡å…ƒå»ä¹°æˆ¿
+// å•†äºº2ä½¿ç”¨50ä¸‡å…ƒå»ä¹°æˆ¿
+// å•†äºº3ä½¿ç”¨60ä¸‡å…ƒå»ä¹°æˆ¿
+// å±Œä¸1ä½¿ç”¨60ä¸‡å…ƒå»ä¹°æˆ¿
+// å±Œä¸1ä½¿ç”¨80ä¸‡å…ƒå»ä¹°æˆ¿
+// å•†äºº1ä½¿ç”¨30ä¸‡å…ƒå»ä¹°è½¦
+// å•†äºº2ä½¿ç”¨50ä¸‡å…ƒå»ä¹°è½¦
+// å•†äºº3ä½¿ç”¨60ä¸‡å…ƒå»ä¹°è½¦
+// å±Œä¸1ä½¿ç”¨60ä¸‡å…ƒå»ä¹°è½¦
+// å±Œä¸1ä½¿ç”¨80ä¸‡å…ƒå»ä¹°è½¦

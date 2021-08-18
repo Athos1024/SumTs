@@ -1,49 +1,49 @@
-// ×é¼ş»ùÀà
+// ç»„ä»¶åŸºç±»
 class Component {
-    // Ä£°å·½·¨£¬°Ñ×é¼şäÖÈ¾µÄÁ÷³Ì¶¨ÒåºÃ
-    setup() {
-      this.componentWillMount();
-      this.doRender();
-      this.componentDidMount();
-    }
-    private doRender() {
-      // ×öÊµ¼ÊµÄäÖÈ¾¹¤×÷
-    }
-    componentWillMount() {}
-    componentDidMount() {}
+  // æ¨¡æ¿æ–¹æ³•ï¼ŒæŠŠç»„ä»¶æ¸²æŸ“çš„æµç¨‹å®šä¹‰å¥½
+  setup() {
+    this.componentWillMount();
+    this.doRender();
+    this.componentDidMount();
   }
-  
-  class ComponentA extends Component {
-    componentWillMount() {
-      console.log('A×é¼ş¼´½«±»äÖÈ¾');
-    }
-    componentDidMount() {
-      console.log('A×é¼şäÖÈ¾Íê³É');
-    }
+  private doRender() {
+    // åšå®é™…çš„æ¸²æŸ“å·¥ä½œ
   }
-  
-  class ComponentB extends Component {
-    componentWillMount() {
-      console.log('B×é¼ş¼´½«±»äÖÈ¾');
-    }
-    componentDidMount() {
-      console.log('B×é¼şäÖÈ¾Íê³É');
-    }
+  componentWillMount() {}
+  componentDidMount() {}
+}
+
+class ComponentA extends Component {
+  componentWillMount() {
+    console.log('Aç»„ä»¶å³å°†è¢«æ¸²æŸ“');
   }
-  
+  componentDidMount() {
+    console.log('Aç»„ä»¶æ¸²æŸ“å®Œæˆ');
+  }
+}
+
+class ComponentB extends Component {
+  componentWillMount() {
+    console.log('Bç»„ä»¶å³å°†è¢«æ¸²æŸ“');
+  }
+  componentDidMount() {
+    console.log('Bç»„ä»¶æ¸²æŸ“å®Œæˆ');
+  }
+}
+
 
 class Client {
-    public static main(): void {
-        const compA = new ComponentA();
-        compA.setup();
-      
-        const compB = new ComponentB();
-        compB.setup();
-    }
+  public static main(): void {
+      const compA = new ComponentA();
+      compA.setup();
+    
+      const compB = new ComponentB();
+      compB.setup();
+  }
 }
 Client.main()
 
-// A×é¼ş¼´½«±»äÖÈ¾
-// A×é¼şäÖÈ¾Íê³É
-// B×é¼ş¼´½«±»äÖÈ¾
-// B×é¼şäÖÈ¾Íê³É
+// Aç»„ä»¶å³å°†è¢«æ¸²æŸ“
+// Aç»„ä»¶æ¸²æŸ“å®Œæˆ
+// Bç»„ä»¶å³å°†è¢«æ¸²æŸ“
+// Bç»„ä»¶æ¸²æŸ“å®Œæˆ

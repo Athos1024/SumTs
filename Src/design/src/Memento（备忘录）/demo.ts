@@ -1,4 +1,4 @@
-// ±¸ÍüÂ¼Àà
+// ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
 class Memento {
     private x: number;
     private y: number;
@@ -14,7 +14,7 @@ class Memento {
     }
 }
 
-// Ô­·¢Æ÷Àà
+// Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 class Role {
     private x: number;
     private y: number;
@@ -22,7 +22,7 @@ class Role {
         this.x = x;
         this.y = y;
     }
-    // ÒÆ¶¯µ½ÐÂµÄÎ»ÖÃ
+    // ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½Âµï¿½Î»ï¿½ï¿½
     moveTo(x: number, y: number): Memento {
         this.x = x;
         this.y = y;
@@ -31,28 +31,28 @@ class Role {
     save(): Memento {
         return new Memento(this.x, this.y);
     }
-    // ¸ù¾Ý±¸ÍüÂ¼»ØÍËµ½Ä³Ò»¸öÎ»ÖÃ
+    // ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ëµï¿½Ä³Ò»ï¿½ï¿½Î»ï¿½ï¿½
     goBack(memento: Memento) {
         this.x = memento.getX();
         this.y = memento.getY();
     }
 }
 
-// ¸ºÔðÈË£¬¹ÜÀíËùÓÐ±¸ÍüÂ¼
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Â¼
 class HistoryRecords {
     private records = [];
-    // Ìí¼Ó±¸ÍüÂ¼
+    // ï¿½ï¿½ï¿½Ó±ï¿½ï¿½ï¿½Â¼
     add(record: Memento): void {
         this.records.push(record);
     }
-    // ·µ»Ø±¸ÍüÂ¼
+    // ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½Â¼
     get(index: number): Memento {
         if (this.records[index]) {
             return this.records[index];
         }
         return null;
     }
-    // Çå³ýÖ¸¶¨Î»ÖÃºóÃæµÄ±¸ÍüÂ¼
+    // ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ãºï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Â¼
     cleanRecordsAfter(index: number): void {
         this.records.slice(0, index + 1);
     }
@@ -61,20 +61,20 @@ class HistoryRecords {
 
 class Client {
     public static main(): void {
-        const role = new Role('¿¨Í¨Ð¡ÈË', 0, 0);
+        const role = new Role('ï¿½ï¿½Í¨Ð¡ï¿½ï¿½', 0, 0);
         const records = new HistoryRecords();
-        // ¼ÇÂ¼³õÊ¼Î»ÖÃ
+        // ï¿½ï¿½Â¼ï¿½ï¿½Ê¼Î»ï¿½ï¿½
         records.add(role.save());
-        // ÒÆ¶¯Ê±Ìí¼Ó±¸ÍüÂ¼
+        // ï¿½Æ¶ï¿½Ê±ï¿½ï¿½ï¿½Ó±ï¿½ï¿½ï¿½Â¼
         role.moveTo(10, 10);
         records.add(role.save());
         role.moveTo(20, 30);
         records.add(role.save());
-        // »ØÍËµ½³õÊ¼Î»ÖÃ
+        // ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½
         const GO_BACK_STEP = 0;
         const firstMemento = records.get(GO_BACK_STEP);
         role.goBack(firstMemento);
-        // Çå³ýºóÃæµÄ¼ÇÂ¼
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Â¼
         records.cleanRecordsAfter(GO_BACK_STEP);
     }
 }

@@ -1,6 +1,6 @@
-//²Î¿¼£ºhttps://www.oodesign.com/interpreter-pattern.html
+//å‚è€ƒï¼šhttps://www.oodesign.com/interpreter-pattern.html
 
-//ÂŞÂíÊı×Ö×ª»»Îª°¢À­²®Êı×Ö
+//ç½—é©¬æ•°å­—è½¬æ¢ä¸ºé˜¿æ‹‰ä¼¯æ•°å­—
 class Context {
     private input: string;
     private output: number;
@@ -48,7 +48,7 @@ abstract class Expression {
     }
 }
 
-//Ç§Î»±í´ïÊ½
+//åƒä½è¡¨è¾¾å¼
 class ThousandExpression extends Expression {
     public one(): string { return "M"; }
     public four(): string { return " "; }
@@ -56,7 +56,7 @@ class ThousandExpression extends Expression {
     public nine(): string { return " "; }
     public multiplier(): number { return 1000; }
 }
-//°ÙÎ»±í´ïÊ½
+//ç™¾ä½è¡¨è¾¾å¼
 class HundredExpression extends Expression {
     public one(): string { return "C"; }
     public four(): string { return "CD"; }
@@ -64,7 +64,7 @@ class HundredExpression extends Expression {
     public nine(): string { return "CM"; }
     public multiplier(): number { return 100; }
 }
-//Ê®Î»±í´ïÊ½
+//åä½è¡¨è¾¾å¼
 class TenExpression extends Expression {
     public one(): string { return "X"; }
     public four(): string { return "XL"; }
@@ -72,7 +72,7 @@ class TenExpression extends Expression {
     public nine(): string { return "XC"; }
     public multiplier(): number { return 10; }
 }
-//¸öÎ»±í´ïÊ½
+//ä¸ªä½è¡¨è¾¾å¼
 class OneExpression extends Expression {
     public one(): string { return "I"; }
     public four(): string { return "IV"; }

@@ -14,7 +14,7 @@ class ConcreteIterator implements Iterator {
         this.collection = collection
     }
     /**
-     * »ñÈ¡ÏÂÒ»¸öÔªËØ
+     * è·å–ä¸‹ä¸€ä¸ªå…ƒç´ 
      */
     public next(): any {
         var result = this.collection[this.position]
@@ -22,7 +22,7 @@ class ConcreteIterator implements Iterator {
         return result
     }
     /**
-     * ÅĞ¶ÏÊÇ·ñ»¹ÓĞÏÂÒ»¸öÔªËØ
+     * åˆ¤æ–­æ˜¯å¦è¿˜æœ‰ä¸‹ä¸€ä¸ªå…ƒç´ 
      */
     public hasNext(): boolean {
         return this.position < this.collection.length
@@ -42,12 +42,8 @@ class Numbers implements Aggregator {
 class Client {
     public static main(): void {
         const nArray = [7, 29, 8, 15, 2, 14]
-        const numbers: Numbers = new Numbers(
-            nArray
-        ),
-            it: ConcreteIterator = <
-                ConcreteIterator
-                >numbers.createIterator()
+        const numbers: Numbers = new Numbers(nArray);
+        const it: ConcreteIterator = <ConcreteIterator>numbers.createIterator()
 
         while (it.hasNext()) {
             console.log(it.next())

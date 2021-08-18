@@ -1,6 +1,6 @@
 abstract class Beverage {
     boilWater() {
-        console.log("°ÑË®Öó·Ğ");
+        console.log("æŠŠæ°´ç…®æ²¸");
     }
 
     abstract brew(): void;
@@ -17,25 +17,25 @@ abstract class Beverage {
 
 class Coffee extends Beverage {
     brew(): void {
-        console.log("ÓÃ·ĞË®³åÅİ¿§·È");
+        console.log("ç”¨æ²¸æ°´å†²æ³¡å’–å•¡");
     }
     pourInCup(): void {
-        console.log("°Ñ¿§·Èµ¹½ø±­×Ó");
+        console.log("æŠŠå’–å•¡å€’è¿›æ¯å­");
     }
     addCondiments(): void {
-        console.log("¼ÓÌÇºÍÅ£ÄÌ");
+        console.log("åŠ ç³–å’Œç‰›å¥¶");
     }
 }
 
 class Tea extends Beverage {
     brew(): void {
-        console.log("ÓÃ·ĞË®½şÅİ²èÒ¶");
+        console.log("ç”¨æ²¸æ°´æµ¸æ³¡èŒ¶å¶");
     }
     pourInCup(): void {
-        console.log("°Ñ²èµ¹½ø±­×Ó");
+        console.log("æŠŠèŒ¶å€’è¿›æ¯å­");
     }
     addCondiments(): void {
-        console.log("¼ÓÄûÃÊ");
+        console.log("åŠ æŸ æª¬");
     }
 }
 
@@ -49,11 +49,11 @@ class Client {
 }
 Client.main()
 
-// °ÑË®Öó·Ğ
-// ÓÃ·ĞË®³åÅİ¿§·È
-// °Ñ¿§·Èµ¹½ø±­×Ó
-// ¼ÓÌÇºÍÅ£ÄÌ
-// °ÑË®Öó·Ğ
-// ÓÃ·ĞË®½şÅİ²èÒ¶
-// °Ñ²èµ¹½ø±­×Ó
-// ¼ÓÄûÃÊ
+// æŠŠæ°´ç…®æ²¸
+// ç”¨æ²¸æ°´å†²æ³¡å’–å•¡
+// æŠŠå’–å•¡å€’è¿›æ¯å­
+// åŠ ç³–å’Œç‰›å¥¶
+// æŠŠæ°´ç…®æ²¸
+// ç”¨æ²¸æ°´æµ¸æ³¡èŒ¶å¶
+// æŠŠèŒ¶å€’è¿›æ¯å­
+// åŠ æŸ æª¬

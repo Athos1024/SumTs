@@ -20,17 +20,17 @@ class BookShelf implements Aggregate {
     constructor() {
         this.count = 0;
     }
-    public getBook(index: number): Book { //È¡µÃÄÄ±¾•ø
+    public getBook(index: number): Book { //å–å¾—å“ªæœ¬æ›¸
         return this.books[index];
     }
-    public appendBook(book: Book): void { //Ôö¼Ó•ø
+    public appendBook(book: Book): void { //å¢åŠ æ›¸
         this.books.push(book);
         this.count++;
     }
-    public getLength(): number { //È¡µÃ•ø¼ÜÄ¿Ç°¶àÉÙ•ø
+    public getLength(): number { //å–å¾—æ›¸æ¶ç›®å‰å¤šå°‘æ›¸
         return this.count;
     }
-    public iterator(): Iterater { //È¡µÃŒ¤ÔL·½·¨ •şŒ¢×Ô¼º·ÅÈëIteratorƒÈ®a³öÒ»±éšv·½·¨
+    public iterator(): Iterater { //å–å¾—å°‹è¨ªæ–¹æ³• æœƒå°‡è‡ªå·±æ”¾å…¥Iteratorå…§ç”¢å‡ºä¸€éæ­·æ–¹æ³•
         return new BookShelfIterator(this);
     }
 
@@ -38,18 +38,18 @@ class BookShelf implements Aggregate {
 class BookShelfIterator implements Iterater {
     private bookshelf: BookShelf;
     private index: number;
-    constructor(bshelf: BookShelf) { //°Ñ•ø¼Ü·ÅßMí
+    constructor(bshelf: BookShelf) { //æŠŠæ›¸æ¶æ”¾é€²ä¾†
         this.bookshelf = bshelf;
-        this.index = 0; //Ä¿Ç°Î»ÖÃÔÚ0
+        this.index = 0; //ç›®å‰ä½ç½®åœ¨0
     }
-    public hasNext(): boolean { //ÊÇ·ñÓĞÏÂÒ»‚€¾ÍÊÇÓÉ¬FÔÚÎ»ÖÃK´_¶¨•ø¼ÜÊÇ²»ÊÇÓĞÄÇüN¶à•ø Èç¹û¬FÔÚÎ»ÖÃ9 ÇÒ•øÒ²Ö»ÓĞ9±¾£¬´ú±íÒÑ½››]ÓĞÏÂÒ»‚€ÁË
+    public hasNext(): boolean { //æ˜¯å¦æœ‰ä¸‹ä¸€å€‹å°±æ˜¯ç”±ç¾åœ¨ä½ç½®ä¸¦ç¢ºå®šæ›¸æ¶æ˜¯ä¸æ˜¯æœ‰é‚£éº¼å¤šæ›¸ å¦‚æœç¾åœ¨ä½ç½®9 ä¸”æ›¸ä¹Ÿåªæœ‰9æœ¬ï¼Œä»£è¡¨å·²ç¶“æ²’æœ‰ä¸‹ä¸€å€‹äº†
         if (this.index < this.bookshelf.getLength()) {
             return true;
         } else {
             return false;
         }
     }
-    //È¡µÃÏÂÒ»±¾•ø£¬ÇÒ•şÍ¸ß^Ô“•ø¼Ü
+    //å–å¾—ä¸‹ä¸€æœ¬æ›¸ï¼Œä¸”æœƒé€éè©²æ›¸æ¶
     public next(): Object {
         let book: Book = this.bookshelf.getBook(this.index);
         this.index++;

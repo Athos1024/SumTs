@@ -1,0 +1,1 @@
+var easystarjs = require('easystarjs')

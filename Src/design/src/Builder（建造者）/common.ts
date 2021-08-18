@@ -1,4 +1,4 @@
-//²úÆ·½ÇÉ«£º°üº¬¶à¸ö×é³É²¿¼şµÄ¸´ÔÓ¶ÔÏó¡£
+//äº§å“è§’è‰²ï¼šåŒ…å«å¤šä¸ªç»„æˆéƒ¨ä»¶çš„å¤æ‚å¯¹è±¡ã€‚
 class Product {
     private partA: String
     private partB: String
@@ -13,23 +13,23 @@ class Product {
         this.partC = partC
     }
     public show(): void {
-        //ÏÔÊ¾²úÆ·µÄÌØĞÔ
-        console.log('²úÆ·µÄ²¿¼ş·Ö±ğÎª£º', this.partA, this.partB, this.partC)
+        //æ˜¾ç¤ºäº§å“çš„ç‰¹æ€§
+        console.log('äº§å“çš„éƒ¨ä»¶åˆ†åˆ«ä¸ºï¼š', this.partA, this.partB, this.partC)
     }
 }
-//³éÏó½¨ÔìÕß£º°üº¬´´½¨²úÆ·¸÷¸ö×Ó²¿¼şµÄ³éÏó·½·¨¡£
+//æŠ½è±¡å»ºé€ è€…ï¼šåŒ…å«åˆ›å»ºäº§å“å„ä¸ªå­éƒ¨ä»¶çš„æŠ½è±¡æ–¹æ³•ã€‚
 abstract class Builder {
-    //´´½¨²úÆ·¶ÔÏó
+    //åˆ›å»ºäº§å“å¯¹è±¡
     protected product: Product = new Product()
     public abstract buildPartA(): void
     public abstract buildPartB(): void
     public abstract buildPartC(): void
-    //·µ»Ø²úÆ·¶ÔÏó
+    //è¿”å›äº§å“å¯¹è±¡
     public getResult(): Product {
         return this.product
     }
 }
-//¾ßÌå½¨ÔìÕß£ºÊµÏÖÁË³éÏó½¨ÔìÕß½Ó¿Ú¡£
+//å…·ä½“å»ºé€ è€…ï¼šå®ç°äº†æŠ½è±¡å»ºé€ è€…æ¥å£ã€‚
 class ConcreteBuilder extends Builder {
     constructor() {
         super()
@@ -44,7 +44,7 @@ class ConcreteBuilder extends Builder {
         this.product.setPartC("partC")
     }
 }
-//¾ßÌå½¨ÔìÕß1£ºÊµÏÖÁË³éÏó½¨ÔìÕß½Ó¿Ú¡£
+//å…·ä½“å»ºé€ è€…1ï¼šå®ç°äº†æŠ½è±¡å»ºé€ è€…æ¥å£ã€‚
 class ConcreteBuilder1 extends Builder {
     constructor() {
         super()
@@ -59,7 +59,7 @@ class ConcreteBuilder1 extends Builder {
         this.product.setPartC("partC1")
     }
 }
-//Ö¸»ÓÕß£ºµ÷ÓÃ½¨ÔìÕßÖĞµÄ·½·¨Íê³É¸´ÔÓ¶ÔÏóµÄ´´½¨¡£
+//æŒ‡æŒ¥è€…ï¼šè°ƒç”¨å»ºé€ è€…ä¸­çš„æ–¹æ³•å®Œæˆå¤æ‚å¯¹è±¡çš„åˆ›å»ºã€‚
 class Director {
     public static getProduct(builder: Builder) {
         builder.buildPartA()
@@ -69,14 +69,14 @@ class Director {
     }
 }
 
-//²âÊÔ
+//æµ‹è¯•
 class Client {
     public static main(): void {
         const builder0: Builder = new ConcreteBuilder()
         const builder1: Builder = new ConcreteBuilder1()
-        //²âÊÔ:´´½¨Õßbuilder0
+        //æµ‹è¯•:åˆ›å»ºè€…builder0
         // const product: Product = Director.getProduct(builder0)
-        //²âÊÔ:´´½¨Õßbuilder1,µ÷Õû²¿¼ş
+        //æµ‹è¯•:åˆ›å»ºè€…builder1,è°ƒæ•´éƒ¨ä»¶
         const product: Product = Director.getProduct(builder1)
         product.show()
     }

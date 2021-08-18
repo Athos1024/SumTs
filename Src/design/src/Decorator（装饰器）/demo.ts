@@ -1,20 +1,20 @@
-//在开发中，一个场景我们经常遇到，就是要给某个类增加方法，但这个不是自己类的，里面的代码乱七八糟，我们当然不想修改这样的代码。解决方案就是装饰器
+//鍦ㄥ紑鍙戜腑锛屼竴涓満鏅垜浠粡甯搁亣鍒帮紝灏辨槸瑕佺粰鏌愪釜绫诲鍔犳柟娉曪紝浣嗚繖涓笉鏄嚜宸辩被鐨勶紝閲岄潰鐨勪唬鐮佷贡涓冨叓绯燂紝鎴戜滑褰撶劧涓嶆兂淇敼杩欐牱鐨勪唬鐮併�傝В鍐虫柟妗堝氨鏄楗板櫒
 
-//别人写的战斗机类
+//鍒汉鍐欑殑鎴樻枟鏈虹被
 @addMissileFire
 class Fighter {
     public doSomething() {
 
     }
 }
-//现在想给战斗机增加发射导弹的功能
+//鐜板湪鎯崇粰鎴樻枟鏈哄鍔犲彂灏勫寮圭殑鍔熻兘
 function addMissileFire(target) {
-    target.missileFire = () => { console.log('发射导弹') }
+    target.missileFire = () => { console.log('鍙戝皠瀵煎脊') }
 }
-//测试
+//娴嬭瘯
 class Client {
     public static main() {
         Fighter.missileFire()
     }
 }
-Client.main()//发射导弹
+Client.main()//鍙戝皠瀵煎脊

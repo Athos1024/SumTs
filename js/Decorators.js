@@ -4,6 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var Decorators;
 (function (Decorators) {
     //类装饰器
@@ -41,23 +44,21 @@ var Decorators;
             console.log('end');
         };
     }
-    function logMethod2(target, methodName, desc) {
-        console.log('logMethod2====');
-        console.log('end');
-    }
-    // @logClass1("log")
-    class A {
-        foo(/* @logParams('params') */ a) {
+    let A = class A {
+        foo(a) {
         }
-    }
+    };
+    __decorate([
+        attr("att")
+    ], A.prototype, "ele", void 0);
     __decorate([
         logMethod('method'),
-        logMethod2
+        __param(0, logParams('params'))
     ], A.prototype, "foo", null);
+    A = __decorate([
+        logClass1("log")
+    ], A);
     let a = new A();
     a.ele = "str";
-    a.foo;
-    a.foo;
-    a.foo;
 })(Decorators || (Decorators = {}));
 //# sourceMappingURL=Decorators.js.map

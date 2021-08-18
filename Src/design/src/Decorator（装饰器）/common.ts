@@ -1,4 +1,4 @@
-//µÃÒæÓÚJSÔÚÓï·¨²ãÃæÊµÏÖÁË×°ÊÎÆ÷£¨Ìá°¸£©£¬ÕâÈÃ×°ÊÎÆ÷µÄÊµÏÖ±äµÃ·Ç³£¼òµ¥
+//å¾—ç›ŠäºJSåœ¨è¯­æ³•å±‚é¢å®ç°äº†è£…é¥°å™¨ï¼ˆææ¡ˆï¼‰ï¼Œè¿™è®©è£…é¥°å™¨çš„å®ç°å˜å¾—éå¸¸ç®€å•
 @testable
 class MyTestableClass {
   // ...
@@ -8,13 +8,13 @@ function testable(target) {
 }
 MyTestableClass.isTestable // true
 
-//ÉÏÃæ´úÂëÖĞ£¬@testable¾ÍÊÇÒ»¸öĞŞÊÎÆ÷¡£ËüĞŞ¸ÄÁËMyTestableClassÕâ¸öÀàµÄĞĞÎª£¬ÎªËü¼ÓÉÏÁË¾²Ì¬ÊôĞÔisTestable¡£
-testableº¯ÊıµÄ²ÎÊıtargetÊÇMyTestableClassÀà±¾Éí¡£
+//ä¸Šé¢ä»£ç ä¸­ï¼Œ@testableå°±æ˜¯ä¸€ä¸ªä¿®é¥°å™¨ã€‚å®ƒä¿®æ”¹äº†MyTestableClassè¿™ä¸ªç±»çš„è¡Œä¸ºï¼Œä¸ºå®ƒåŠ ä¸Šäº†é™æ€å±æ€§isTestableã€‚
+testableå‡½æ•°çš„å‚æ•°targetæ˜¯MyTestableClassç±»æœ¬èº«ã€‚
 
-//»ù±¾ÉÏ£¬ĞŞÊÎÆ÷µÄĞĞÎª¾ÍÊÇÏÂÃæÕâÑù¡£
+//åŸºæœ¬ä¸Šï¼Œä¿®é¥°å™¨çš„è¡Œä¸ºå°±æ˜¯ä¸‹é¢è¿™æ ·ã€‚
 @decorator
 class A {}
-// µÈÍ¬ÓÚ
+// ç­‰åŒäº
 class A {}
 A = decorator(A) || A;
 

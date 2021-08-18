@@ -1,10 +1,10 @@
 class Subject {
     /**
-     * ¹Û²ìÕßÁÐ±í
+     * è§‚å¯Ÿè€…åˆ—è¡¨
      */
     private observers: Observer[] = [];
     /**
-     * ×¢²á¹Û²ìÕß
+     * æ³¨å†Œè§‚å¯Ÿè€…
      * @param observer
      */
     public addObserver(observer: Observer): void {
@@ -12,7 +12,7 @@ class Subject {
         this.observers.push(observer);
     }
     /**
-     * ÒÆ³ý¹Û²ìÕß
+     * ç§»é™¤è§‚å¯Ÿè€…
      * @param observer
      */
     public deleteObserver(observer: Observer): void {
@@ -21,7 +21,7 @@ class Subject {
         this.observers.splice(n, 1);
     }
     /**
-     * Í¨ÖªËùÓÐ¹Û²ìÕß
+     * é€šçŸ¥æ‰€æœ‰è§‚å¯Ÿè€…
      */
     public notifyObservers(): void {
         console.log("notify all the observers", this.observers);

@@ -1,5 +1,4 @@
 namespace Decorators {
-
     //类装饰器
     function logClass1(params: any) {
         return function (target: any) {
@@ -42,8 +41,6 @@ namespace Decorators {
         }
     }
 
-  
-
     @logClass1("log")
     class A {
 
@@ -59,5 +56,4 @@ namespace Decorators {
 
     let a = new A();
     a.ele = "str"
-    a.foo
 }

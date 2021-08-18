@@ -1,6 +1,6 @@
 class Singleton {
     private static instance: Singleton
-    private constructor() {}	//ÉèÖÃ¹¹Ôìº¯Êıprivate£¬·ÀÖ¹newÊµÀı»¯
+    private constructor() {}	//è®¾ç½®æ„é€ å‡½æ•°privateï¼Œé˜²æ­¢newå®ä¾‹åŒ–
     public static getInstance(): Singleton {
       if (!Singleton.instance) {
         Singleton.instance = new Singleton()

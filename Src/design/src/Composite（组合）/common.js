@@ -1,6 +1,6 @@
-//É¨ÃèÎÄ¼ş¼Ğ£ºÎÄ¼ş¼ĞºÍÎÄ¼şÖ®¼äµÄ¹ØÏµ£¬·Ç³£ÊÊºÏÓÃ×éºÏÄ£Ê½À´ÃèÊö¡£ÎÄ¼ş¼ĞÀï¼È¿ÉÒÔ°üº¬ÎÄ¼ş£¬ÓÖ¿ÉÒÔ°üº¬ÆäËûÎÄ¼ş¼Ğ£¬×îÖÕ¿ÉÄÜ×éºÏ³ÉÒ»¿ÃÊ÷¡£
+//æ‰«ææ–‡ä»¶å¤¹ï¼šæ–‡ä»¶å¤¹å’Œæ–‡ä»¶ä¹‹é—´çš„å…³ç³»ï¼Œéå¸¸é€‚åˆç”¨ç»„åˆæ¨¡å¼æ¥æè¿°ã€‚æ–‡ä»¶å¤¹é‡Œæ—¢å¯ä»¥åŒ…å«æ–‡ä»¶ï¼Œåˆå¯ä»¥åŒ…å«å…¶ä»–æ–‡ä»¶å¤¹ï¼Œæœ€ç»ˆå¯èƒ½ç»„åˆæˆä¸€æ£µæ ‘ã€‚
 
-    //FolderÀà
+    //Folderç±»
     var Folder = function (name) {
         this.name = name;
         this.files = [];
@@ -9,34 +9,34 @@
         this.files.push(file);
     };
     Folder.prototype.scan = function () {
-        console.log('¿ªÊ¼É¨ÃèÎÄ¼ş¼Ğ£º' + this.name);
+        console.log('å¼€å§‹æ‰«ææ–‡ä»¶å¤¹ï¼š' + this.name);
         for (var i = 0, file; file = this.files[i++];) {
             file.scan();
         };
     };
 
-    //FileÀà
+    //Fileç±»
     var File = function (name) {
         this.name = name;
     };
     File.prototype.add = function () {
-        throw new Error('ÎÄ¼şÏÂÃæ²»ÄÜÔÙÌí¼ÓÎÄ¼ş');
+        throw new Error('æ–‡ä»¶ä¸‹é¢ä¸èƒ½å†æ·»åŠ æ–‡ä»¶');
     };
     File.prototype.scan = function () {
-        console.log('¿ªÊ¼É¨ÃèÎÄ¼ş£º' + this.name);
+        console.log('å¼€å§‹æ‰«ææ–‡ä»¶ï¼š' + this.name);
     };
 
-    //´´½¨3¸öÎÄ¼ş¼Ğ
-    var folder = new Folder('Ñ§Ï°×ÊÁÏ');
+    //åˆ›å»º3ä¸ªæ–‡ä»¶å¤¹
+    var folder = new Folder('å­¦ä¹ èµ„æ–™');
     var folder1 = new Folder('JavaScript');
     var folder2 = new Folder('JQuery');
 
-    //´´½¨3¸öÎÄ¼ş
-    var file1 = new File('JavaScriptÉè¼ÆÄ£Ê½Óë¿ª·¢Êµ¼ù');
-    var file2 = new File('·æÀûµÄJQuery');
-    var file3 = new File('±à³ÌÈËÉú');
+    //åˆ›å»º3ä¸ªæ–‡ä»¶
+    var file1 = new File('JavaScriptè®¾è®¡æ¨¡å¼ä¸å¼€å‘å®è·µ');
+    var file2 = new File('é”‹åˆ©çš„JQuery');
+    var file3 = new File('ç¼–ç¨‹äººç”Ÿ');
 
-    //°ÑÎÄ¼şÌí¼Óµ½ÎÄ¼ş¼Ğ»òÎÄ¼ş¼ĞÌí¼Óµ½ÁíÒ»ÎÄ¼ş¼ĞÖĞ
+    //æŠŠæ–‡ä»¶æ·»åŠ åˆ°æ–‡ä»¶å¤¹æˆ–æ–‡ä»¶å¤¹æ·»åŠ åˆ°å¦ä¸€æ–‡ä»¶å¤¹ä¸­
     folder1.add(file1);
     folder2.add(file2);
 
@@ -44,5 +44,5 @@
     folder.add(folder2);
     folder.add(file3);
 
-    //É¨ÃèÎÄ¼ş¼Ğ
+    //æ‰«ææ–‡ä»¶å¤¹
     folder.scan();

@@ -1,12 +1,12 @@
 
-//³éÏó¹¹¼ş
+//æŠ½è±¡æ„ä»¶
 interface Component {
     add(c: Component): void;
     remove(c: Component): void;
     getChild(i: number): Component;
     operation(): void;
 }
-//Ê÷Ò¶¹¹¼ş
+//æ ‘å¶æ„ä»¶
 class Leaf implements Component {
     private name: string;
     constructor(name: string) {
@@ -18,10 +18,10 @@ class Leaf implements Component {
         return null;
     }
     public operation(): void {
-        console.log("Ê÷Ò¶" + this.name + "£º±»·ÃÎÊ£¡");
+        console.log("æ ‘å¶" + this.name + "ï¼šè¢«è®¿é—®ï¼");
     }
 }
-//Ê÷Ö¦¹¹¼ş
+//æ ‘ææ„ä»¶
 class Composite implements Component {
     private children: Array<Component> = [];
     public add(c: Component): void {
@@ -39,7 +39,7 @@ class Composite implements Component {
         })
     }
 }
-//É¾³ıÊı×éÖĞÖ¸¶¨µÄÔªËØ
+//åˆ é™¤æ•°ç»„ä¸­æŒ‡å®šçš„å…ƒç´ 
 function deleteVal(arr: Array<any>, val: any) {
     let index = arr.indexOf(val);
     if (index > -1) {
@@ -64,6 +64,6 @@ class Client {
 }
 Client.main()
 
-// Ê÷Ò¶1£º±»·ÃÎÊ£¡
-// Ê÷Ò¶2£º±»·ÃÎÊ£¡
-// Ê÷Ò¶3£º±»·ÃÎÊ£¡
+// æ ‘å¶1ï¼šè¢«è®¿é—®ï¼
+// æ ‘å¶2ï¼šè¢«è®¿é—®ï¼
+// æ ‘å¶3ï¼šè¢«è®¿é—®ï¼

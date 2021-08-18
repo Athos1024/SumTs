@@ -1,36 +1,36 @@
 interface Strategy {
-    Operation(): void; //·¢µç²Ù×÷µÄ·½·¨
-    getName(): string; //·¢µçĞÍÄÜÃû³Æ
+    Operation(): void; //å‘ç”µæ“ä½œçš„æ–¹æ³•
+    getName(): string; //å‘ç”µå‹èƒ½åç§°
 }
 
-//ºËÄÜ·¢µç
+//æ ¸èƒ½å‘ç”µ
 class NuclearPower implements Strategy {
     Operation(): void {
-        console.log("Ohhh!! ºÃ¿ÉÅÂÅ¶");
+        console.log("Ohhh!! å¥½å¯æ€•å“¦");
         console.log("Power Coming!!");
     }
     getName(): string {
         return 'NuclearPower';
     }
 }
-//Ë®·¢µç
+//æ°´å‘ç”µ
 class WaterPower implements Strategy {
     Operation(): void {
-        console.log("Waiting..."); //ºÜÂı
-        console.log("Waiting..."); //È±Ë®
-        console.log("Waiting..."); //¾ÍÖ»ÄÜ·¢ÄÇÃ´¶à ²»Òª¼±
-        console.log("Power Coming!!"); //µçí¿©
+        console.log("Waiting..."); //å¾ˆæ…¢
+        console.log("Waiting..."); //ç¼ºæ°´
+        console.log("Waiting..."); //å°±åªèƒ½å‘é‚£ä¹ˆå¤š ä¸è¦æ€¥
+        console.log("Power Coming!!"); //ç”µä¾†å’¯
     }
     getName(): string {
         return 'WaterPower';
     }
 }
-//»ğ·¢µç
+//ç«å‘ç”µ
 class FirePower implements Strategy {
     Operation(): void {
-        console.log("Ohhh!! Ç¬œQµÄÃº"); //„e“úĞÄ£¡¸É¾»µÄÃº
-        console.log("A lot of Smoke!!"); //ÊÇÎíö²
-        console.log("Power Coming!!");  //µçí¿©
+        console.log("Ohhh!! ä¹¾æ·¨çš„ç…¤"); //åˆ¥æ“”å¿ƒï¼å¹²å‡€çš„ç…¤
+        console.log("A lot of Smoke!!"); //æ˜¯é›¾éœ¾
+        console.log("Power Coming!!");  //ç”µä¾†å’¯
     }
     getName(): string {
         return 'FirePower';
@@ -38,13 +38,13 @@ class FirePower implements Strategy {
 }
 
 class Battery {
-    private strategy: Strategy; //³äµç²ßÂÔ
+    private strategy: Strategy; //å……ç”µç­–ç•¥
     setPowerStrategy(str: Strategy) {
-        this.strategy = str; //ÔO¶¨³äµç²ßÂÔ
+        this.strategy = str; //è¨­å®šå……ç”µç­–ç•¥
     }
     charge(): void {
-        console.log('Use: ' + this.strategy.getName() + ' Charging...'); //ÕıÔÚÓÃÊ²Ã´µç³äµç
-        this.strategy.Operation(); //³äµç°É
+        console.log('Use: ' + this.strategy.getName() + ' Charging...'); //æ­£åœ¨ç”¨ä»€ä¹ˆç”µå……ç”µ
+        this.strategy.Operation(); //å……ç”µå§
     }
     discharge(): void {
         console.log('Discharging...');
@@ -53,17 +53,17 @@ class Battery {
 
 class Client {
     public static main(): void {
-        let gogorobattery: Battery = new Battery(); //ĞÂÔöÒ»µç³Ø
+        let gogorobattery: Battery = new Battery(); //æ–°å¢ä¸€ç”µæ± 
 
-        gogorobattery.setPowerStrategy(new FirePower()); //¸ü¸Äµç³Ø³äµç·½·¨
-        gogorobattery.charge(); //°ïµç³Ø³äµç¿©
-        gogorobattery.discharge(); //ºÄµç³ØµÄµç
-        console.log('›]µçÁË ÄÃÈ¥³äµç');
+        gogorobattery.setPowerStrategy(new FirePower()); //æ›´æ”¹ç”µæ± å……ç”µæ–¹æ³•
+        gogorobattery.charge(); //å¸®ç”µæ± å……ç”µå’¯
+        gogorobattery.discharge(); //è€—ç”µæ± çš„ç”µ
+        console.log('æ²’ç”µäº† æ‹¿å»å……ç”µ');
 
         gogorobattery.setPowerStrategy(new NuclearPower());
         gogorobattery.charge();
         gogorobattery.discharge();
-        console.log('›]µçÁË ÄÃÈ¥³äµç');
+        console.log('æ²’ç”µäº† æ‹¿å»å……ç”µ');
 
         gogorobattery.setPowerStrategy(new WaterPower());
         gogorobattery.charge();
@@ -73,16 +73,16 @@ class Client {
 Client.main()
 
 // Use: FirePower Charging...
-// Ohhh!! Ç¬œQµÄÃº
+// Ohhh!! ä¹¾æ·¨çš„ç…¤
 // A lot of Smoke!!
 // Power Coming!!
 // Discharging...
-// ›]µçÁË ÄÃÈ¥³äµç
+// æ²’ç”µäº† æ‹¿å»å……ç”µ
 // Use: NuclearPower Charging...
-// Ohhh!! ºÃ¿ÉÅÂÅ¶
+// Ohhh!! å¥½å¯æ€•å“¦
 // Power Coming!!
 // Discharging...
-// ›]µçÁË ÄÃÈ¥³äµç
+// æ²’ç”µäº† æ‹¿å»å……ç”µ
 // Use: WaterPower Charging...
 // Waiting...
 // Waiting...

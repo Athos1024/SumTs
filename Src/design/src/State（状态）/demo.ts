@@ -1,6 +1,6 @@
-// ÕË»§ÓĞ¼¸ÖÖ×´Ì¬£ºÕı³££¬Í¸Ö§£¬ÊÜÏŞ
+// è´¦æˆ·æœ‰å‡ ç§çŠ¶æ€ï¼šæ­£å¸¸ï¼Œé€æ”¯ï¼Œå—é™
 
-// ×´Ì¬³éÏóÀà
+// çŠ¶æ€æŠ½è±¡ç±»
 abstract class State {
     private name: string;
     protected acc: Account;
@@ -16,11 +16,11 @@ abstract class State {
     abstract stateCheck();
 }
 
-// Õı³£×´Ì¬Àà
+// æ­£å¸¸çŠ¶æ€ç±»
 class NormalState extends State {
     acc: Account;
     constructor(acc: Account) {
-        super('Õı³£');
+        super('æ­£å¸¸');
         this.acc = acc;
     }
     deposit(amount: number) {
@@ -32,25 +32,25 @@ class NormalState extends State {
         this.stateCheck();
     }
     computeInterest() {
-        console.log('Õı³£×´Ì¬£¬ÎŞĞëÖ§¸¶ÀûÏ¢');
+        console.log('æ­£å¸¸çŠ¶æ€ï¼Œæ— é¡»æ”¯ä»˜åˆ©æ¯');
     }
-    // ×´Ì¬×ª»»
+    // çŠ¶æ€è½¬æ¢
     stateCheck() {
         if (this.acc.getBalance() > -2000 && this.acc.getBalance() <= 0) {
             this.acc.setState(new OverdraftState(this.acc));
         } else if (this.acc.getBalance() == -2000) {
             this.acc.setState(new RestrictedState(this.acc));
         } else if (this.acc.getBalance() < -2000) {
-            console.log('²Ù×÷ÊÜÏŞ');
+            console.log('æ“ä½œå—é™');
         }
     }
 }
 
-// Í¸Ö§×´Ì¬
+// é€æ”¯çŠ¶æ€
 class OverdraftState extends State {
     acc: Account;
     constructor(acc: Account) {
-        super('Í¸Ö§');
+        super('é€æ”¯');
         this.acc = acc;
     }
     deposit(amount: number) {
@@ -62,25 +62,25 @@ class OverdraftState extends State {
         this.stateCheck();
     }
     computeInterest() {
-        console.log('¼ÆËãÀûÏ¢');
+        console.log('è®¡ç®—åˆ©æ¯');
     }
-    // ×´Ì¬×ª»»
+    // çŠ¶æ€è½¬æ¢
     stateCheck() {
         if (this.acc.getBalance() > 0) {
             this.acc.setState(new NormalState(this.acc));
         } else if (this.acc.getBalance() == -2000) {
             this.acc.setState(new RestrictedState(this.acc));
         } else if (this.acc.getBalance() < -2000) {
-            console.log('²Ù×÷ÊÜÏŞ');
+            console.log('æ“ä½œå—é™');
         }
     }
 }
 
-// ÊÜÏŞ×´Ì¬
+// å—é™çŠ¶æ€
 class RestrictedState extends State {
     acc: Account;
     constructor(acc: Account) {
-        super('ÊÜÏŞ');
+        super('å—é™');
         this.acc = acc;
     }
     deposit(amount: number) {
@@ -88,12 +88,12 @@ class RestrictedState extends State {
         this.stateCheck();
     }
     withdraw(ammount: number) {
-        console.log('ÕËºÅÊÜÏŞ£¬È¡¿îÊ§°Ü');
+        console.log('è´¦å·å—é™ï¼Œå–æ¬¾å¤±è´¥');
     }
     computeInterest() {
-        console.log('¼ÆËãÀûÏ¢');
+        console.log('è®¡ç®—åˆ©æ¯');
     }
-    // ×´Ì¬×ª»»
+    // çŠ¶æ€è½¬æ¢
     stateCheck() {
         if (this.acc.getBalance() > 0) {
             this.acc.setState(new NormalState(this.acc));
@@ -103,17 +103,17 @@ class RestrictedState extends State {
     }
 }
 
-// ÕË»§Àà£¬´ú±í×´Ì¬Ä£Ê½ÖĞµÄ»·¾³
+// è´¦æˆ·ç±»ï¼Œä»£è¡¨çŠ¶æ€æ¨¡å¼ä¸­çš„ç¯å¢ƒ
 class Account {
     private name: string;
     private state: State;
-    // Óà¶î
+    // ä½™é¢
     private balance = 0;
-    // ³õÊ¼Ê±ÎªÕı³£×´Ì¬
+    // åˆå§‹æ—¶ä¸ºæ­£å¸¸çŠ¶æ€
     constructor(name: string) {
         this.name = name;
         this.state = new NormalState(this);
-        console.log(`ÓÃ»§ ${this.name} ¿ª»§£¬Óà¶îÎª ${this.balance}`);
+        console.log(`ç”¨æˆ· ${this.name} å¼€æˆ·ï¼Œä½™é¢ä¸º ${this.balance}`);
         console.log('--------');
     }
     getBalance(): number {
@@ -125,23 +125,23 @@ class Account {
     setState(state: State) {
         this.state = state;
     }
-    // ´æ¿î
+    // å­˜æ¬¾
     deposit(amount: number) {
         this.state.deposit(amount);
-        console.log(`´æ¿î ${amount}`);
-        console.log(`Óà¶îÎª ${this.balance}`);
-        console.log(`ÕË»§×´Ì¬Îª ${this.state.getName()}`);
+        console.log(`å­˜æ¬¾ ${amount}`);
+        console.log(`ä½™é¢ä¸º ${this.balance}`);
+        console.log(`è´¦æˆ·çŠ¶æ€ä¸º ${this.state.getName()}`);
         console.log('--------');
     }
-    // È¡¿î
+    // å–æ¬¾
     withdraw(amount: number) {
         this.state.withdraw(amount);
-        console.log(`È¡¿î ${amount}`);
-        console.log(`Óà¶îÎª ${this.balance}`);
-        console.log(`ÕË»§×´Ì¬Îª ${this.state.getName()}`);
+        console.log(`å–æ¬¾ ${amount}`);
+        console.log(`ä½™é¢ä¸º ${this.balance}`);
+        console.log(`è´¦æˆ·çŠ¶æ€ä¸º ${this.state.getName()}`);
         console.log('--------');
     }
-    // ½áËãÀûÏ¢
+    // ç»“ç®—åˆ©æ¯
     computeInterest() {
         this.state.computeInterest();
     }
@@ -160,27 +160,27 @@ class Client {
 }
 Client.main()
 
-// ÓÃ»§ Bob ¿ª»§£¬Óà¶îÎª 0
+// ç”¨æˆ· Bob å¼€æˆ·ï¼Œä½™é¢ä¸º 0
 // --------
-// ´æ¿î 1000
-// Óà¶îÎª 1000
-// ÕË»§×´Ì¬Îª Õı³£
+// å­˜æ¬¾ 1000
+// ä½™é¢ä¸º 1000
+// è´¦æˆ·çŠ¶æ€ä¸º æ­£å¸¸
 // --------
-// È¡¿î 2000
-// Óà¶îÎª -1000
-// ÕË»§×´Ì¬Îª Í¸Ö§
+// å–æ¬¾ 2000
+// ä½™é¢ä¸º -1000
+// è´¦æˆ·çŠ¶æ€ä¸º é€æ”¯
 // --------
-// ´æ¿î 3000
-// Óà¶îÎª 2000
-// ÕË»§×´Ì¬Îª Õı³£
+// å­˜æ¬¾ 3000
+// ä½™é¢ä¸º 2000
+// è´¦æˆ·çŠ¶æ€ä¸º æ­£å¸¸
 // --------
-// È¡¿î 4000
-// Óà¶îÎª -2000
-// ÕË»§×´Ì¬Îª ÊÜÏŞ
+// å–æ¬¾ 4000
+// ä½™é¢ä¸º -2000
+// è´¦æˆ·çŠ¶æ€ä¸º å—é™
 // --------
-// ÕËºÅÊÜÏŞ£¬È¡¿îÊ§°Ü
-// È¡¿î 1000
-// Óà¶îÎª -2000
-// ÕË»§×´Ì¬Îª ÊÜÏŞ
+// è´¦å·å—é™ï¼Œå–æ¬¾å¤±è´¥
+// å–æ¬¾ 1000
+// ä½™é¢ä¸º -2000
+// è´¦æˆ·çŠ¶æ€ä¸º å—é™
 // --------
-// ¼ÆËãÀûÏ¢
+// è®¡ç®—åˆ©æ¯

@@ -1,5 +1,5 @@
 
-//±¸ÍüÂ¼
+//ï¿½ï¿½ï¿½ï¿½Â¼
 class Memento {
     private state: string;
     public constructor(state: string) {
@@ -12,7 +12,7 @@ class Memento {
         return this.state;
     }
 }
-//·¢ÆðÈË
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 class Originator {
     private state: string;
     public setState(state: string): void {
@@ -28,7 +28,7 @@ class Originator {
         this.setState(m.getState());
     }
 }
-//¹ÜÀíÕß
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 class Caretaker {
     private memento: Memento;
     public setMemento(m: Memento): void {
@@ -45,16 +45,16 @@ class Client {
         const or: Originator = new Originator();
         const cr: Caretaker = new Caretaker();
         or.setState("S0");
-        console.log("³õÊ¼×´Ì¬:" + or.getState());
-        cr.setMemento(or.createMemento()); //±£´æ×´Ì¬      
+        console.log("ï¿½ï¿½Ê¼×´Ì¬:" + or.getState());
+        cr.setMemento(or.createMemento()); //ï¿½ï¿½ï¿½ï¿½×´Ì¬      
         or.setState("S1");
-        console.log("ÐÂµÄ×´Ì¬:" + or.getState());
-        or.restoreMemento(cr.getMemento()); //»Ö¸´×´Ì¬
-        console.log("»Ö¸´×´Ì¬:" + or.getState());
+        console.log("ï¿½Âµï¿½×´Ì¬:" + or.getState());
+        or.restoreMemento(cr.getMemento()); //ï¿½Ö¸ï¿½×´Ì¬
+        console.log("ï¿½Ö¸ï¿½×´Ì¬:" + or.getState());
     }
 }
 Client.main()
 
-// ³õÊ¼×´Ì¬:S0
-// ÐÂµÄ×´Ì¬:S1
-// »Ö¸´×´Ì¬:S0
+// ï¿½ï¿½Ê¼×´Ì¬:S0
+// ï¿½Âµï¿½×´Ì¬:S1
+// ï¿½Ö¸ï¿½×´Ì¬:S0

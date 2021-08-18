@@ -1,22 +1,22 @@
-// ³¡¾°£º¹Ë¿Íµã²Ëºó£¬·şÎñÔ±¼ÇÏÂ¹Ë¿ÍµÄĞÅÏ¢£¬²Ë×öºÃºó¹ã²¥Í¨Öª¹Ë¿ÍÁìÈ¡
+// åœºæ™¯ï¼šé¡¾å®¢ç‚¹èœåï¼ŒæœåŠ¡å‘˜è®°ä¸‹é¡¾å®¢çš„ä¿¡æ¯ï¼Œèœåšå¥½åå¹¿æ’­é€šçŸ¥é¡¾å®¢é¢†å–
 
-// ¹Û²ìÕß»ùÀà
+// è§‚å¯Ÿè€…åŸºç±»
 class Observer {
     take(msg: string): void { }
 }
 
-// Ä¿±ê»ùÀà
+// ç›®æ ‡åŸºç±»
 class Subject {
     set: Set<Observer> = new Set();
-    // ×¢²á»Øµ÷
+    // æ³¨å†Œå›è°ƒ
     add(observer: Observer): void {
         this.set.add(observer);
     }
-    // ×¢Ïú»Øµ÷
+    // æ³¨é”€å›è°ƒ
     remove(observer: Observer): void {
         this.set.delete(observer);
     }
-    // ´¥·¢ËùÓĞÒÑ×¢²áµÄ»Øµ÷
+    // è§¦å‘æ‰€æœ‰å·²æ³¨å†Œçš„å›è°ƒ
     notify(msg: string): void {
         this.set.forEach(observer => {
             observer.take(msg);
@@ -24,25 +24,25 @@ class Subject {
     }
 }
 
-// ¾ßÌåÄ¿±ê£¬·şÎñÔ±Àà
+// å…·ä½“ç›®æ ‡ï¼ŒæœåŠ¡å‘˜ç±»
 class Waiter extends Subject {
-    // ²Ë×öÍêºóÍ¨ÖªËùÓĞ×¢²áÁËµÄ¹Ë¿Í
+    // èœåšå®Œåé€šçŸ¥æ‰€æœ‰æ³¨å†Œäº†çš„é¡¾å®¢
     ready(): void {
         this.notify('ready');
     }
 }
 
-// ¾ßÌå¹Û²ìÕß£¬¹Ë¿ÍÀà
+// å…·ä½“è§‚å¯Ÿè€…ï¼Œé¡¾å®¢ç±»
 class Clienter extends Observer {
     name: string;
-    // ³õÊ¼»¯Ê±½«×ÔÉí×¢²áµ½Ä¿±ê£¬ÒÔ±ã½ÓÊÕÍ¨Öª
+    // åˆå§‹åŒ–æ—¶å°†è‡ªèº«æ³¨å†Œåˆ°ç›®æ ‡ï¼Œä»¥ä¾¿æ¥æ”¶é€šçŸ¥
     constructor(name: string, waiter: Waiter) {
         super();
         this.name = name;
         waiter.add(this);
     }
     take(msg: string) {
-        console.log(`¹Ë¿Í ${this.name} ÊÕµ½ÁËÏûÏ¢ÏÔÊ¾×´Ì¬ÊÇ<${msg}>£¬ µ½°ÉÌ¨ÁìÈ¡ÁË²Ë`);
+        console.log(`é¡¾å®¢ ${this.name} æ”¶åˆ°äº†æ¶ˆæ¯æ˜¾ç¤ºçŠ¶æ€æ˜¯<${msg}>ï¼Œ åˆ°å§å°é¢†å–äº†èœ`);
     }
 }
 
@@ -50,14 +50,14 @@ class Clienter extends Observer {
 class Client {
     public static main(): void {
         const waiter = new Waiter();
-        // ¹Ë¿Íµã²Ëºó£¬µÈ´ı·şÎñÔ±Í¨Öª
+        // é¡¾å®¢ç‚¹èœåï¼Œç­‰å¾…æœåŠ¡å‘˜é€šçŸ¥
         const bob = new Clienter('Bob', waiter);
         const mick = new Clienter('Mick', waiter);
-        // ²Ë×¼±¸ºÃºó£¬·şÎñÔ±¹ã²¥Í¨Öª¹Ë¿Í¿ÉÒÔµ½°ÉÌ¨ÁìÈ¡ÁË
+        // èœå‡†å¤‡å¥½åï¼ŒæœåŠ¡å‘˜å¹¿æ’­é€šçŸ¥é¡¾å®¢å¯ä»¥åˆ°å§å°é¢†å–äº†
         waiter.ready();
     }
 }
 Client.main()
 
-// ¹Ë¿Í Bob ÊÕµ½ÁËÏûÏ¢ÏÔÊ¾×´Ì¬ÊÇ<ready>£¬ µ½°ÉÌ¨ÁìÈ¡ÁË²Ë
-// ¹Ë¿Í Mick ÊÕµ½ÁËÏûÏ¢ÏÔÊ¾×´Ì¬ÊÇ<ready>£¬ µ½°ÉÌ¨ÁìÈ¡ÁË²Ë
+// é¡¾å®¢ Bob æ”¶åˆ°äº†æ¶ˆæ¯æ˜¾ç¤ºçŠ¶æ€æ˜¯<ready>ï¼Œ åˆ°å§å°é¢†å–äº†èœ
+// é¡¾å®¢ Mick æ”¶åˆ°äº†æ¶ˆæ¯æ˜¾ç¤ºçŠ¶æ€æ˜¯<ready>ï¼Œ åˆ°å§å°é¢†å–äº†èœ

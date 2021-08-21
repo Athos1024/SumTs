@@ -46,7 +46,7 @@ function build(cb) {
                     //默认tsconfig.json
                     let tsProject = ts.createProject("./tsconfig.json");
                     tsProject.options.outFile = `./${element}.js`
-                    tsProject.config.include = [`./${parentPath}/${element}/**/*`]
+                    tsProject.config.include.push(`./${parentPath}/${element}/**/*`)
                     tsProject.src().
                     pipe(tsProject()).on('error', () => {
                         fs.writeFileSync(cachePath, JSON.stringify(cache))
